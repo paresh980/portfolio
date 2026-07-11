@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin">
+
+<!-- ================= LOGIN ================= -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <div class="eyebrow">admin access</div>
+    <h1>Portfolio Admin</h1>
+    <p class="sub">Log in with the admin account you created in Supabase (Authentication → Users).</p>
+    <div class="login-error" id="loginError">Incorrect email or password. Try again.</div>
+    <form id="loginForm">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="loginEmail" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="loginPassword" required autocomplete="current-password">
+      </div>
+      <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center;">Log In</button>
+    </form>
+    <p style="margin-top:18px;"><a href="index.html" style="font-family:var(--mono);font-size:12.5px;color:var(--text-faint);">← Back to portfolio</a></p>
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div id="appScreen" style="display:none;">
+  <div class="admin-topbar">
+    <div class="wrap">
+      <div class="admin-brand"><span class="dot"></span> Portfolio Admin</div>
+      <div class="admin-topbar-actions">
+        <a class="btn btn-ghost btn-sm" href="index.html" target="_blank">View site ↗</a>
+        <button class="btn btn-outline btn-sm" id="logoutBtn">Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap admin-shell">
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-tab="profile">Profile</button>
+      <button class="admin-tab" data-tab="projects">Projects</button>
+      <button class="admin-tab" data-tab="certificates">Certificates</button>
+      <button class="admin-tab" data-tab="skills">Skills</button>
+      <button class="admin-tab" data-tab="experience">Experience</button>
+      <button class="admin-tab" data-tab="settings">Settings</button>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="admin-panel active" id="panel-profile">
+      <div class="panel-head"><h2>Profile & contact info</h2></div>
+      <form class="admin-form" id="profileForm"></form>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="admin-panel" id="panel-projects">
+      <div class="panel-head"><h2>Projects</h2></div>
+      <form class="admin-form" id="form-projects"></form>
+      <div class="item-list" id="list-projects"></div>
+    </div>
+
+    <!-- CERTIFICATES -->
+    <div class="admin-panel" id="panel-certificates">
+      <div class="panel-head"><h2>Certificates</h2></div>
+      <form class="admin-form" id="form-certificates"></form>
+      <div class="item-list" id="list-certificates"></div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="admin-panel" id="panel-skills">
+      <div class="panel-head"><h2>Skills</h2></div>
+      <form class="admin-form" id="form-skills"></form>
+      <div class="item-list" id="list-skills"></div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="admin-panel" id="panel-experience">
+      <div class="panel-head"><h2>Experience</h2></div>
+      <form class="admin-form" id="form-experience"></form>
+      <div class="item-list" id="list-experience"></div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="admin-panel" id="panel-settings">
+      <div class="panel-head"><h2>Settings</h2></div>
+
+      <div class="admin-form">
+        <h3 style="margin-bottom:14px;font-size:15px;">Change admin password</h3>
+        <p style="font-size:13px;margin-bottom:16px;">This updates the password for the Supabase account you're currently logged in as.</p>
+        <form id="changePassForm">
+          <div class="form-grid">
+            <div class="field"><label>New password</label><input type="password" id="newPass" required minlength="6"></div>
+            <div class="field"><label>Confirm new password</label><input type="password" id="newPass2" required minlength="6"></div>
+          </div>
+          <div class="form-actions"><button class="btn btn-primary" type="submit">Update password</button></div>
+        </form>
+      </div>
+
+      <div class="admin-form">
+        <h3 style="margin-bottom:6px;font-size:15px;">First time here?</h3>
+        <p style="font-size:13px;margin-bottom:16px;">
+          If your database tables are empty (fresh Supabase project), click below to load sample
+          placeholder content so you have something to edit instead of a blank site.
+        </p>
+        <button class="btn btn-outline btn-sm" id="seedBtn">Load sample data</button>
+      </div>
+
+      <div class="admin-form">
+        <h3 style="margin-bottom:6px;font-size:15px;">Backup & transfer data</h3>
+        <p style="font-size:13px;margin-bottom:16px;">
+          All content is stored in this browser only (localStorage). To move your data to another
+          browser or device — or just to keep a backup — export it as a JSON file, and import it there.
+        </p>
+        <div class="io-row">
+          <button class="btn btn-outline btn-sm" id="exportBtn">Export data (.json)</button>
+          <label class="btn btn-outline btn-sm" for="importInput" style="cursor:pointer;">Import data (.json)</label>
+          <input type="file" id="importInput" accept="application/json" style="display:none;">
+        </div>
+      </div>
+
+      <div class="admin-form">
+        <h3 style="margin-bottom:6px;font-size:15px;color:var(--danger);">Danger zone</h3>
+        <p style="font-size:13px;margin-bottom:16px;">Reset everything back to the sample placeholder data. This cannot be undone.</p>
+        <button class="btn btn-outline btn-sm" id="resetBtn" style="border-color:var(--danger);color:var(--danger);">Reset all data</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="db.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

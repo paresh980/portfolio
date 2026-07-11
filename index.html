@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<meta name="description" content="Software engineering portfolio — projects, certificates, skills and experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo"><span class="dot"></span> <span data-field="name">Your Name</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero wrap">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-kicker"><span class="pulse"></span> AVAILABLE FOR OPPORTUNITIES</div>
+      <h1 class="hero-title">Hi, I'm <span class="accent" data-field="name">Your Name</span> —<br><span data-field="role">B.Tech Graduate · Software Engineer</span></h1>
+      <p class="hero-tagline" data-field="tagline">I build fast, reliable software and enjoy turning hard problems into clean, working code.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+        <a class="btn btn-outline" data-resume href="resume.pdf" download>Download Resume</a>
+      </div>
+      <div class="hero-socials">
+        <a class="icon-link" id="githubLinkHero" href="#" target="_blank" rel="noopener" aria-label="GitHub"></a>
+        <a class="icon-link" id="linkedinLinkHero" href="#" target="_blank" rel="noopener" aria-label="LinkedIn"></a>
+        <a class="icon-link" id="emailLinkHero" href="#" aria-label="Email"></a>
+      </div>
+    </div>
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span>
+        <span class="terminal-title">guest@portfolio: ~</span>
+      </div>
+      <div class="terminal-body" id="terminalBody"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="eyebrow">about</div>
+        <h2 class="section-title">A little about me</h2>
+        <p class="about-text" data-field="about">About text goes here.</p>
+        <div class="stat-row">
+          <div class="stat"><b>3+</b><span>PROJECTS SHIPPED</span></div>
+          <div class="stat"><b>2+</b><span>CERTIFICATIONS</span></div>
+          <div class="stat"><b data-field="location">Location</b><span>BASED IN</span></div>
+        </div>
+      </div>
+      <div class="resume-box reveal">
+        <div style="display:flex;justify-content:center;margin-bottom:14px;color:var(--accent);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="width:40px;height:40px;"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" stroke-linejoin="round"/><path d="M14 3v6h6" stroke-linejoin="round"/><path d="M9 13h6M9 17h6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>My Resume</h3>
+        <p>Get the full picture — education, projects and experience in one PDF.</p>
+        <a class="btn btn-primary" data-resume href="resume.pdf" download>Download Resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">projects</div>
+      <h2 class="section-title">Things I've built</h2>
+      <p class="section-sub">A selection of projects — each with source code and, where possible, a live demo you can click into.</p>
+    </div>
+    <div class="grid-projects reveal-stagger" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATES ================= -->
+<section id="certificates">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">certificates</div>
+      <h2 class="section-title">Certifications</h2>
+      <p class="section-sub">Courses and certifications I've completed, each independently verifiable.</p>
+    </div>
+    <div class="grid-certs reveal-stagger" id="certGrid"></div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">skills</div>
+      <h2 class="section-title">Tools I work with</h2>
+      <p class="section-sub">Languages, frameworks and tools I use regularly, grouped by area.</p>
+    </div>
+    <div class="skills-groups reveal-stagger" id="skillsGroups"></div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">experience</div>
+      <h2 class="section-title">Where I've worked</h2>
+      <p class="section-sub">Internships, roles and ongoing contributions, in order.</p>
+    </div>
+    <div class="timeline reveal-stagger" id="timeline"></div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <div class="eyebrow" style="justify-content:center;">contact</div>
+      <h2>Let's build something together</h2>
+      <p>I'm open to internships, junior roles and freelance work. Reach out — I usually reply within a day.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" id="emailLink" href="#">Email Me</a>
+        <a class="icon-link" id="githubLink" href="#" target="_blank" rel="noopener" aria-label="GitHub"></a>
+        <a class="icon-link" id="linkedinLink" href="#" target="_blank" rel="noopener" aria-label="LinkedIn"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built by <span data-field="name">Your Name</span> · © <span id="year"></span> · <a href="admin.html" style="color:var(--text-faint);">admin</a></p>
+</footer>
+
+<!-- ================= MODAL ================= -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" id="modalBox"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
